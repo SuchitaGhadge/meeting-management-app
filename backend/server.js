@@ -4,6 +4,7 @@ const connectdb = require('./config/db')
 const cors = require('cors')
 const app = express()
 const userRoutes = require('./routes/userRoutes')
+const meetingRoutes = require('./routes/meetingRoutes')
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware')
 const req = require('express/lib/request')
 dotenv.config()
@@ -34,6 +35,7 @@ app.post("/api/addnote", (req,res) => {
 })
 
 app.use("/api/users", userRoutes)
+app.use("/api/meeting", meetingRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
